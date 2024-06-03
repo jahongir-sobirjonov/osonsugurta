@@ -24,26 +24,19 @@ public class CascoService {
     private final ModelMapper modelMapper;
 
     public CascoResponse create(CascoCreateRequest cascoRequest) {
-        // Map request to entity
         Casco casco = modelMapper.map(cascoRequest, Casco.class);
-
-        // Fetch companies that offer "Casco" services
         List<Company> companies = companyRepository.findByServicesContainingIgnoreCase("Casco");
 
         for (Company company : companies) {
             System.out.println("company.getName() = " + company.getName());
         }
         casco.setCompany(companies);
-
-        // Save Casco entity
         Casco savedCasco = cascoRepository.save(casco);
 
-        // Prepare response
         List<String> companyListByName = new ArrayList<>();
         for (Company company : companies) {
             companyListByName.add(company.getName());
         }
-
         CascoResponse cascoResponse = modelMapper.map(savedCasco, CascoResponse.class);
         cascoResponse.setCompaniesName(companyListByName);
         return cascoResponse;
