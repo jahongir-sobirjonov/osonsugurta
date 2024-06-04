@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -33,12 +34,23 @@ public class CompanyService {
         return "Successfully created " + createRequest.getName();
     }
 
-    public List<String> getCompaniesByService(String service) {
-        List<Company> companies = companyRepository.findByServicesContainingIgnoreCase(service);
-        List<String> companyNames = new ArrayList<>();
-        for (Company company : companies) {
-            companyNames.add(company.getName());
-        }
-        return companyNames;
-    }
+
+
+//    public List<String> getCompaniesByService(String service) {
+//        List<Company> companies = companyRepository.findByServicesIgnoreCaseContaining(service);
+//        List<String> companyNames = new ArrayList<>();
+//        for (Company company : companies) {
+//            companyNames.add(company.getName());
+//        }
+//        System.out.println("Companies matching service: " + companyNames);
+//        return companyNames;
+//    }
+public List<String> getCompaniesByService(String service) {
+    List<Company> companies = companyRepository.findByServicesContainingIgnoreCase(service);
+    List<String> companyNames = companies.stream()
+            .map(Company::getName)
+            .collect(Collectors.toList());
+    System.out.println("Companies matching service: " + companyNames);
+    return companyNames;
+}
 }

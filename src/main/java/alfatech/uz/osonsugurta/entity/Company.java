@@ -20,7 +20,6 @@ public class Company extends BaseEntity {
     private String name;
     private LocalDate warrantyPeriod; // kafolat muddati
     private String policyNumber;
-    @Column(nullable = false)
     private String insuranceType;
     private Double warrantyAmount; // companyaning kafolat(sug'urta) summasi
 
