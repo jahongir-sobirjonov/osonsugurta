@@ -1,10 +1,8 @@
 package alfatech.uz.osonsugurta.service;
-
 import alfatech.uz.osonsugurta.entity.User;
 import alfatech.uz.osonsugurta.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service

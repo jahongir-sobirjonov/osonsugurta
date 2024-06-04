@@ -1,8 +1,6 @@
 package alfatech.uz.osonsugurta.service;
 import alfatech.uz.osonsugurta.dto.request.OsagoCreateRequest;
 import alfatech.uz.osonsugurta.dto.response.OsagoResponse;
-import alfatech.uz.osonsugurta.dto.response.OsagoResponse;
-import alfatech.uz.osonsugurta.entity.Osago;
 import alfatech.uz.osonsugurta.entity.Company;
 import alfatech.uz.osonsugurta.entity.Osago;
 import alfatech.uz.osonsugurta.exception.DataNotFoundException;
@@ -11,7 +9,6 @@ import alfatech.uz.osonsugurta.repository.OsagoRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

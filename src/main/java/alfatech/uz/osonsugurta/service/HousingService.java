@@ -1,23 +1,18 @@
 package alfatech.uz.osonsugurta.service;
 import alfatech.uz.osonsugurta.dto.request.HousingCreateRequest;
 import alfatech.uz.osonsugurta.dto.response.HousingResponse;
-import alfatech.uz.osonsugurta.dto.response.OsagoResponse;
-import alfatech.uz.osonsugurta.entity.Housing;
 import alfatech.uz.osonsugurta.entity.Company;
-import alfatech.uz.osonsugurta.entity.Osago;
+import alfatech.uz.osonsugurta.entity.Housing;
 import alfatech.uz.osonsugurta.exception.DataNotFoundException;
-import alfatech.uz.osonsugurta.repository.HousingRepository;
 import alfatech.uz.osonsugurta.repository.CompanyRepository;
-import jakarta.persistence.EntityNotFoundException;
+import alfatech.uz.osonsugurta.repository.HousingRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
