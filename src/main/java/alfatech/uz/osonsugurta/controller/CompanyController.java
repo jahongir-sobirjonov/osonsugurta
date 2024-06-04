@@ -24,4 +24,9 @@ public class CompanyController {
     public String addService(@PathVariable String companyName, @RequestParam String serviceName){
         return companyService.addServiceToCompany(companyName, serviceName);
     }
+
+    @GetMapping("/services")
+    public List<String> getCompaniesByService(@RequestParam String service) {
+        return companyService.getCompaniesByService(service);
+    }
 }
