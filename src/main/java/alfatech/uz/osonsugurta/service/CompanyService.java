@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CompanyService {
@@ -28,5 +31,14 @@ public class CompanyService {
         Company company = modelMapper.map(createRequest, Company.class);
         companyRepository.save(company);
         return "Successfully created " + createRequest.getName();
+    }
+
+    public List<String> getCompaniesByService(String service) {
+        List<Company> companies = companyRepository.findByServicesContainingIgnoreCase(service);
+        List<String> companyNames = new ArrayList<>();
+        for (Company company : companies) {
+            companyNames.add(company.getName());
+        }
+        return companyNames;
     }
 }
