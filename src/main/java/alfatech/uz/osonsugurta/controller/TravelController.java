@@ -4,6 +4,7 @@ import alfatech.uz.osonsugurta.dto.response.HousingResponse;
 import alfatech.uz.osonsugurta.dto.response.TravelResponse;
 import alfatech.uz.osonsugurta.service.TravelService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +19,12 @@ public class TravelController {
     private final TravelService travelService;
 
     @PostMapping("/create")
-    public TravelResponse create(@RequestBody TravelCreateRequest travelRequest) {
-        return travelService.create(travelRequest);
+    public ResponseEntity<TravelResponse> create(@RequestBody TravelCreateRequest travelRequest) {
+        return ResponseEntity.status(200).body(travelService.create(travelRequest));
     }
 
     @GetMapping("get/{id}")
-    public TravelResponse getTravel(@PathVariable UUID id){
-        return travelService.getTravel(id);
+    public ResponseEntity<TravelResponse> getTravel(@PathVariable UUID id){
+        return ResponseEntity.status(200).body(travelService.getTravel(id));
     }
 }

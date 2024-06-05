@@ -4,6 +4,7 @@ import alfatech.uz.osonsugurta.dto.request.OsagoCreateRequest;
 import alfatech.uz.osonsugurta.dto.response.OsagoResponse;
 import alfatech.uz.osonsugurta.service.OsagoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
@@ -14,12 +15,12 @@ public class OsagoController {
     private final OsagoService osagoService;
 
     @PostMapping("/create")
-    public OsagoResponse create(@RequestBody OsagoCreateRequest osagoRequest) {
-        return osagoService.create(osagoRequest);
+    public ResponseEntity<OsagoResponse> create(@RequestBody OsagoCreateRequest osagoRequest) {
+        return ResponseEntity.status(200).body(osagoService.create(osagoRequest));
     }
 
     @GetMapping("get/{id}")
-    public OsagoResponse getOsago(@PathVariable UUID id){
-        return osagoService.getOsago(id);
+    public ResponseEntity<OsagoResponse> getOsago(@PathVariable UUID id){
+        return ResponseEntity.status(200).body(osagoService.getOsago(id));
     }
 }
