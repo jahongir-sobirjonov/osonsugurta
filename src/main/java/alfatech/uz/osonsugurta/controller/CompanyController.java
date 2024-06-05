@@ -30,4 +30,8 @@ public class CompanyController {
     public ResponseEntity<List<String>> getCompaniesByService(@RequestParam String service) {
         return ResponseEntity.status(200).body(companyService.getCompaniesByService(service));
     }
+    @GetMapping("/get-all-services-of-company")
+    public ResponseEntity<List<String>> getAllServicesOfCompany(@RequestParam String companyName){
+        return ResponseEntity.status(200).body(companyService.getAllServicesOfCompany(companyName));
+    }
 }
