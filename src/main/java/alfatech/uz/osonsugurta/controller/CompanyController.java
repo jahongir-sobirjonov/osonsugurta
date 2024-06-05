@@ -26,7 +26,7 @@ public class CompanyController {
         return ResponseEntity.status(200).body(companyService.addServiceToCompany(companyName, serviceName));
     }
 
-    @GetMapping("/services")
+    @GetMapping("/get-companies-by-service-name")
     public ResponseEntity<List<String>> getCompaniesByService(@RequestParam String service) {
         return ResponseEntity.status(200).body(companyService.getCompaniesByService(service));
     }
