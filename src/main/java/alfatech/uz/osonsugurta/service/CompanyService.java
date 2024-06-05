@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +24,8 @@ public class CompanyService {
         companyRepository.save(company);
         return "Successfully added service to " + company.getName();
     }
+
+
 
     public String create(CompanyCreateRequest createRequest) {
         if (companyRepository.existsByName(createRequest.getName())){
@@ -45,12 +47,29 @@ public class CompanyService {
 //        System.out.println("Companies matching service: " + companyNames);
 //        return companyNames;
 //    }
-public List<String> getCompaniesByService(String service) {
-    List<Company> companies = companyRepository.findByServicesContainingIgnoreCase(service);
-    List<String> companyNames = companies.stream()
-            .map(Company::getName)
-            .collect(Collectors.toList());
-    System.out.println("Companies matching service: " + companyNames);
-    return companyNames;
-}
+//public List<String> getCompaniesByService(String service) {
+//    List<Company> companies = companyRepository.findByServicesContainingIgnoreCase(service);
+//    List<String> companyNames = companies.stream()
+//            .map(Company::getName)
+//            .collect(Collectors.toList());
+//    System.out.println("Companies matching service: " + companyNames);
+//    return companyNames;
+//}
+
+
+    public List<String> getCompaniesByService(String serviceName) {
+        List<Company> companies = companyRepository.findAllByServiceNameContainingIgnoreCase(serviceName.toLowerCase());
+        return companies.stream()
+                .map(Company::getName)
+                .collect(Collectors.toList());
+    }
+
+
+
+    public List<String> getAllServicesOfCompany(String companyName) {
+        Company company = companyRepository.findByName(companyName)
+                .orElseThrow(() -> new IllegalArgumentException("Company not found"));
+
+        return company.getServices();
+    }
 }
