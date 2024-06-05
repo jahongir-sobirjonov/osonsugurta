@@ -4,6 +4,7 @@ import alfatech.uz.osonsugurta.dto.response.HousingResponse;
 import alfatech.uz.osonsugurta.dto.response.HousingResponse;
 import alfatech.uz.osonsugurta.service.HousingService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +19,12 @@ public class HousingController {
     private final HousingService housingService;
 
     @PostMapping("/create")
-    public HousingResponse create(@RequestBody HousingCreateRequest housingRequest) {
-        return housingService.create(housingRequest);
+    public ResponseEntity<HousingResponse> create(@RequestBody HousingCreateRequest housingRequest) {
+        return ResponseEntity.status(200).body(housingService.create(housingRequest));
     }
 
     @GetMapping("get/{id}")
-    public HousingResponse getHousing(@PathVariable UUID id){
-        return housingService.getHousing(id);
+    public ResponseEntity<HousingResponse> getHousing(@PathVariable UUID id){
+        return ResponseEntity.status(200).body(housingService.getHousing(id));
     }
 }

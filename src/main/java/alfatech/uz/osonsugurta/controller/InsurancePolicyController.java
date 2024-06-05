@@ -4,6 +4,7 @@ import alfatech.uz.osonsugurta.entity.User;
 import alfatech.uz.osonsugurta.service.InsurancePolicyService;
 import alfatech.uz.osonsugurta.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,13 +19,13 @@ public class InsurancePolicyController {
     private final UserService userService;
 
     @PostMapping("/create")
-    public InsurancePolicy createPolicy(@RequestBody InsurancePolicy policy) {
-        return insurancePolicyService.createPolicy(policy);
+    public ResponseEntity<InsurancePolicy> createPolicy(@RequestBody InsurancePolicy policy) {
+        return ResponseEntity.status(200).body(insurancePolicyService.createPolicy(policy));
     }
 
     @GetMapping("/user/{email}")
-    public List<InsurancePolicy> getPoliciesByUser(@PathVariable String email) {
+    public ResponseEntity<List<InsurancePolicy>> getPoliciesByUser(@PathVariable String email) {
         User user = userService.findByEmail(email).orElse(null);
-        return insurancePolicyService.findPoliciesByUser(user);
+        return ResponseEntity.status(200).body(insurancePolicyService.findPoliciesByUser(user));
     }
 }
