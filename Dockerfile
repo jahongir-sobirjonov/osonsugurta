@@ -1,5 +1,5 @@
 FROM gradle:7.2.0-jdk17 AS build
-COPY . .
+COPY src .
 RUN gdl clean packace -DskipTests
 
 FROM openjdk:17.0.2-jdk-slim
