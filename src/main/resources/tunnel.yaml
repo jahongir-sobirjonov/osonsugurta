@@ -1,0 +1,4 @@
+tunnels:
+  my-tunnel:
+    proto: http
+    addr: 8083

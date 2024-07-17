@@ -13,13 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-
-    @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
-        return ResponseEntity.status(200).body(userService.registerUser(user));
+    @GetMapping("/get")
+    public String get(){
+        return "Working this";
     }
 
-    @GetMapping("/{email}")
+//    @PostMapping("/register")
+//    public ResponseEntity<User> registerUser(@RequestBody User user) {
+//        return ResponseEntity.status(200).body(userService.registerUser(user));
+//    }
+
+    @GetMapping("/get-user/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         return ResponseEntity.status(200).body(userService.findByEmail(email).orElse(null));
     }

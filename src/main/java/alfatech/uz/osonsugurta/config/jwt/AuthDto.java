@@ -1,4 +1,4 @@
-package alfatech.uz.osonsugurta.dto.request;
+package alfatech.uz.osonsugurta.config.jwt;
 
 import lombok.*;
 
@@ -7,9 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class UserCreateRequest {
-    private String firstName;
-    private String lastName;
+public class AuthDto {
     private String email;
     private String password;
 }
