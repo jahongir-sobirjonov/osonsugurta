@@ -1,3 +1,7 @@
+server:
+  port: 8083
+
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/osonsugurta
@@ -12,21 +16,29 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         show_sql: true
         format_sql: true
-
+  mvc:
+    cors:
+      mappings:
+        /**:
+          allowed-origins: "*"
+          allowed-methods: "*"
+          allowed-headers: "*"
 
 springdoc:
   api-docs:
     enabled: true
-    path: /api-docs
+    path: /v3/api-docs
   swagger-ui:
     enabled: true
-    path: /swagger
+    path: /swagger-ui.html
     tags-sorter: alpha
     operations-sorter: alpha
-    disable-swagger-default-url: true
     doc-expansion: none
 
 
+jwt:
+  expiry: 604800000
+  secret: qwetuykyjhfdgsafgjhkoiutrefdsavzbxcnmktjyhretgwedfvbnjkrjyerhsfg
 
 
 

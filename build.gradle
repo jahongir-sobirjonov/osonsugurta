@@ -22,29 +22,44 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    implementation 'org.postgresql:postgresql'
+// PostgreSQL (runtime only)
+    runtimeOnly 'org.postgresql:postgresql'
 
+    // ModelMapper
     implementation 'org.modelmapper:modelmapper:3.1.1'
 
-    implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
-    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.5'
-    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.5'
-
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-
+    // Spring Boot Web Starter
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.2'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.0'
+    // JUnit Jupiter (test)
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0-M2'
 
+    // AWS Java SDK S3
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.748'
+
+    // Spring Boot Test Starter (test)
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.1'
+
+    // Spring Boot Data JPA Starter
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.3.1'
+
+    // Springdoc OpenAPI Starter for Web MVC
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.4.0'
+
+    // Springdoc OpenAPI UI
+    implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
+
+    // Spring Boot Security Starter
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // JWT API
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
