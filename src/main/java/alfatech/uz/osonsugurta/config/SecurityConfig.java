@@ -102,15 +102,14 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(List.of("https://45f4-93-188-80-101.ngrok-free.app")); // Allow your Swagger UI origin
-        configuration.setAllowedHeaders(List.of("*")); // You might want to specify headers if possible
-        configuration.setAllowedMethods(List.of("GET", "POST", "DELETE", "PUT", "OPTIONS")); // Include OPTIONS for preflight requests
-        configuration.setAllowCredentials(true); // Allow credentials if needed
-
+        configuration.setAllowedOriginPatterns(List.of("*"));
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "DELETE", "PUT"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
 
 
 
